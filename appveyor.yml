@@ -1,0 +1,45 @@
+environment:
+
+  matrix:
+    - PYTHON: "C:\\Python27"
+      SCONS_VERSION: "2.5.1"
+
+install:
+
+  - SET "PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+  - pip install --upgrade pip
+  - pip install wheel 
+  # - pip install -r requirements.txt
+  - pip install "scons==%SCONS_VERSION%"
+  # - python bin/downloads.py
+
+before_test:
+
+  - python --version
+  - scons --version
+
+build: off
+
+# test_script:
+#   - scons test
+#   - scons unit-test
+
+# branches:
+#   only:
+#     - master
+# # enable service required for build/tests
+# services:
+#   - docker
+
+# # scripts that run after cloning repository
+# install:
+#   - cmd: cd mgear_dist
+#   - cmd: git submodule update --init
+#   - cmd: git submodule foreach --recursive git checkout master
+
+# # scripts to run before build
+# before_build:
+
+# # to run your custom scripts instead of automatic MSBuild
+# build_script:
+#   - cmd: scons with-maya=2018
