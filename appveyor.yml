@@ -3,13 +3,14 @@ clone_folder: "C:\\projects\\mgear"
 environment:
   matrix:
     - PYTHON: "C:\\Python27"
-      SCONS_VERSION: "2.5.1"
+      SCONS_VERSION: "3.0.0"
 
 install:
   - cd "C:\\projects\\mgear"
   - git submodule update --init
   - git submodule foreach --recursive git checkout master
   - SET "PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+  - python -m pip install --upgrade pip
   - pip install "scons==%SCONS_VERSION%"
 
 before_test:
