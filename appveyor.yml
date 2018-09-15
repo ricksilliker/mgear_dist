@@ -5,13 +5,11 @@ environment:
       SCONS_VERSION: "2.5.1"
 
 install:
-
+  - cd C:\\projects\\mgear_dist
+  - git submodule update --init
+  - git submodule foreach --recursive git checkout master
   - SET "PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
-  - pip install --upgrade pip
-  - pip install wheel 
-  # - pip install -r requirements.txt
   - pip install "scons==%SCONS_VERSION%"
-  # - python bin/downloads.py
 
 before_test:
 
@@ -30,12 +28,6 @@ build: off
 # # enable service required for build/tests
 # services:
 #   - docker
-
-# # scripts that run after cloning repository
-# install:
-#   - cmd: cd mgear_dist
-#   - cmd: git submodule update --init
-#   - cmd: git submodule foreach --recursive git checkout master
 
 # # scripts to run before build
 # before_build:
